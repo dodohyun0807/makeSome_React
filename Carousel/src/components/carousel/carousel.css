@@ -1,10 +1,14 @@
-.MainContainer {
+.CarouselContainer {
 	display: flex;
 	flex-flow: column nowrap;
 	margin: 1rem;
 }
 
 .TitleContainer {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
 	font-size: 5rem;
 	font-weight: bold;
 	margin: 1rem;
@@ -14,13 +18,26 @@
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
-	width: 95%;
+	width: 90vw;
+	max-width: 896px;
 	height: 30vh;
-	margin: 0 3rem 0 3rem;
 }
 
 .ImageContainer {
 	display: flex;
-	flex-flow: row nowrap;
+	align-items: center;
 	overflow: hidden;
+	width: 90vw;
+	height: 30vh;
+}
+
+.SlideContainer {
+	display: flex;
+	width: 90vw;
+}
+
+.ImageItem {
+	width: 80vw;
+	margin: 0 10vw 0 10vw;
+	height: 30vh;
 }
