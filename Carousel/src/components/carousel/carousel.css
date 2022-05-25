@@ -1,0 +1,26 @@
+.MainContainer {
+	display: flex;
+	flex-flow: column nowrap;
+	margin: 1rem;
+}
+
+.TitleContainer {
+	font-size: 5rem;
+	font-weight: bold;
+	margin: 1rem;
+}
+
+.ContentContainer {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	width: 95%;
+	height: 30vh;
+	margin: 0 3rem 0 3rem;
+}
+
+.ImageContainer {
+	display: flex;
+	flex-flow: row nowrap;
+	overflow: hidden;
+}
