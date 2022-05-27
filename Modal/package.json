@@ -15,8 +15,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "nodemon --exec ts-node -r tsconfig-paths/register ./main.ts"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
