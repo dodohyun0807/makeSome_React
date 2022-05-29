@@ -1,8 +1,3 @@
-import React, { FunctionComponent } from 'react';
-import { Modal } from '@/components';
+import Main from './Main/Main';
 
-const Home: FunctionComponent = () => {
-  return <Modal />;
-};
-
-export default Home;
+export { Main };
