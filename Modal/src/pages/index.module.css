@@ -1,0 +1,9 @@
+.MainContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(255, 154, 38);
+  color: white;
+  font-weight: bold;
+}

@@ -1,0 +1,8 @@
+.test {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color: blue;
+  height: 10%;
+}

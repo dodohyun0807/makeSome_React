@@ -1,0 +1,25 @@
+.Background {
+  background-color: rgba(0, 0, 0, 0.966);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 99999;
+  opacity: 0.8;
+}
+
+.MainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 50vw;
+  height: 50vh;
+  color: black;
+  font-weight: bold;
+  background-color: beige;
+}
