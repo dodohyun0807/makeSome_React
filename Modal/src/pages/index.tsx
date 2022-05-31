@@ -1,3 +1,12 @@
-import Main from './Main/Main';
+import { Navbar } from '@/components/organisms';
+import Style from './index.module.css';
 
-export { Main };
+const Home = () => {
+  return (
+    <div className={Style.MainContainer}>
+      <Navbar />
+    </div>
+  );
+};
+
+export default Home;

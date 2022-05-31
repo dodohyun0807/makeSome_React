@@ -1,4 +1,4 @@
-.Background {
+.ModalBackgroundShow {
   background-color: rgba(0, 0, 0, 0.966);
   position: fixed;
   display: flex;
@@ -10,16 +10,86 @@
   bottom: 0;
   z-index: 99999;
   opacity: 0.8;
+  animation: fadein 0.3s ease-in;
 }
 
-.MainContainer {
+.ModalMainShow {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: 50vw;
+  width: 50vh;
   height: 50vh;
   color: black;
   font-weight: bold;
   background-color: beige;
+  animation: fadein 0.3s ease-in;
+}
+
+.ModalBackgroundBlindIng {
+  background-color: rgba(0, 0, 0, 0.966);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 99999;
+  opacity: 0;
+  animation: fadeout 0.3s ease-in;
+}
+
+.ModalMainBlindIng {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 50vh;
+  height: 50vh;
+  color: black;
+  font-weight: bold;
+  background-color: beige;
+  opacity: 0;
+  animation: fadeout 0.3s ease-in;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.Btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 1rem;
+  width: 5vw;
+  height: 5vw;
+}
+
+.Btn:hover {
+  cursor: pointer;
+  background-color: white;
+  color: blue;
+  transition: all 1s;
+  border-radius: 1rem;
 }
