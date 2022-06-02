@@ -1,0 +1,9 @@
+.ButtonSubmit {
+  background-color: rgb(253, 253, 120);
+  color: darkblue;
+  font-weight: bold;
+  border: none;
+  border-radius: 3rem;
+  margin-top: 5vh;
+  padding: 1rem;
+}
