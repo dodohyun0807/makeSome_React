@@ -15,6 +15,7 @@
 
 .ModalMainShow {
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -43,6 +44,7 @@
 
 .ModalMainBlindIng {
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   position: absolute;

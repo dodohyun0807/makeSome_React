@@ -1,4 +1,6 @@
-import { FunctionComponent, ReactEventHandler, useEffect, useState, useCallback } from 'react';
+import { FunctionComponent, ReactEventHandler, useState } from 'react';
+import { Textarea, ButtonSubmit } from '@/components/atoms';
+import { useChange } from '@/hooks';
 import Style from './Modal.module.css';
 
 interface Props {
@@ -8,9 +10,11 @@ interface Props {
 
 const Modal: FunctionComponent<Props> = ({ btnValue, content }) => {
   const [isOpen, setIsOpen] = useState<string>('Blind');
+  const [idValue, setIdValue, onIdValueChange] = useChange('');
 
-  const handleOpen = () => {
+  const handleOpen = (): void => {
     setIsOpen('Show');
+    setIdValue('');
   };
 
   const handleClose: ReactEventHandler = (e): void => {
@@ -20,35 +24,51 @@ const Modal: FunctionComponent<Props> = ({ btnValue, content }) => {
     }
   };
 
+  const submitInfo = (): void => {
+    console.log(idValue);
+  };
+
   const isView = () => {
     if (isOpen === 'BlindIng') {
       return (
-        <button
-          type="button"
-          className={Style.ModalBackgroundBlindIng}
+        <div
+          className={Style.ModalBackgroundShow}
+          role="button"
           onClick={(e) => {
             handleClose(e);
           }}
+          onKeyDown={(e) => {
+            handleClose(e);
+          }}
+          tabIndex={0}
         >
           <div className={Style.ModalMainBlindIng}>
             <h1>{content}</h1>
+            <Textarea value={idValue} onChange={onIdValueChange} />
+            <ButtonSubmit type="submit" onClick={submitInfo} />
           </div>
-        </button>
+        </div>
       );
     }
     if (isOpen === 'Show') {
       return (
-        <button
-          type="button"
+        <div
           className={Style.ModalBackgroundShow}
+          role="button"
           onClick={(e) => {
             handleClose(e);
           }}
+          onKeyDown={(e) => {
+            handleClose(e);
+          }}
+          tabIndex={0}
         >
           <div className={Style.ModalMainShow}>
             <h1>{content}</h1>
+            <Textarea value={idValue} onChange={onIdValueChange} />
+            <ButtonSubmit type="submit" onClick={submitInfo} />
           </div>
-        </button>
+        </div>
       );
     }
     return null;
