@@ -1,12 +1,15 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useTransition } from 'react';
 
 const useChange = <T extends { value: string }>(
   initalState: string,
 ): [string, React.Dispatch<React.SetStateAction<string>>, (e: React.ChangeEvent<T>) => void] => {
   const [value, setValue] = useState(initalState);
+  const [isPending, startTransition] = useTransition();
   const onChange = useCallback(
     (e: React.ChangeEvent<T>) => {
-      setValue(e.target.value);
+      startTransition(() => {
+        setValue(e.target.value);
+      });
     },
     [value],
   );

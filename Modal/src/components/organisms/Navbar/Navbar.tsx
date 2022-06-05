@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, memo } from 'react';
 import Style from './Navbar.module.css';
 import { Modal } from '@/components/molecules';
 
@@ -11,4 +11,4 @@ const Navbar: FunctionComponent = () => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);
