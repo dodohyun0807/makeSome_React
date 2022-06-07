@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactEventHandler, useState } from 'react';
-import { Textarea, ButtonSubmit } from '@/components/atoms';
+import { Textarea, ButtonSubmit, Input } from '@/components/atoms';
 import { useChange } from '@/hooks';
 import Style from './Modal.module.css';
 
@@ -11,10 +11,12 @@ interface Props {
 const Modal: FunctionComponent<Props> = ({ btnValue, content }) => {
   const [isOpen, setIsOpen] = useState<string>('Blind');
   const [idValue, setIdValue, onIdValueChange] = useChange('');
+  const [passwordValue, setPasswordIdValue, onPasswordValueChange] = useChange('');
 
   const handleOpen = (): void => {
     setIsOpen('Show');
     setIdValue('');
+    setPasswordIdValue('');
   };
 
   const handleClose: ReactEventHandler = (e): void => {
@@ -26,6 +28,9 @@ const Modal: FunctionComponent<Props> = ({ btnValue, content }) => {
 
   const submitInfo = (): void => {
     console.log(idValue);
+    console.log(passwordValue);
+    setIdValue('');
+    setPasswordIdValue('');
   };
 
   const isView = () => {
@@ -44,8 +49,16 @@ const Modal: FunctionComponent<Props> = ({ btnValue, content }) => {
         >
           <div className={Style.ModalMainBlindIng}>
             <h1>{content}</h1>
-            <Textarea value={idValue} onChange={onIdValueChange} />
-            <ButtonSubmit type="submit" onClick={submitInfo} />
+            <form className={Style.FormContainer}>
+              <Input value={idValue} onChange={onIdValueChange} type="text" placeholder="Id" />
+              <Input
+                value={passwordValue}
+                onChange={onPasswordValueChange}
+                type="password"
+                placeholder="PassWord"
+              />
+              <ButtonSubmit type="submit" onClick={submitInfo} />
+            </form>
           </div>
         </div>
       );
@@ -65,8 +78,16 @@ const Modal: FunctionComponent<Props> = ({ btnValue, content }) => {
         >
           <div className={Style.ModalMainShow}>
             <h1>{content}</h1>
-            <Textarea value={idValue} onChange={onIdValueChange} />
-            <ButtonSubmit type="submit" onClick={submitInfo} />
+            <form className={Style.FormContainer}>
+              <Input value={idValue} onChange={onIdValueChange} type="text" placeholder="Id" />
+              <Input
+                value={passwordValue}
+                onChange={onPasswordValueChange}
+                type="password"
+                placeholder="PassWord"
+              />
+              <ButtonSubmit type="submit" onClick={submitInfo} />
+            </form>
           </div>
         </div>
       );

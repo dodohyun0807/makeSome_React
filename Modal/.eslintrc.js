@@ -13,6 +13,8 @@ module.exports = {
     'prettier',
   ],
   rules: {
+    'react/require-default-props': 0,
+    'react/default-props-match-prop-types': 0,
     'linebreak-style': 0,
     'import/prefer-default-export': 0,
     'import/extensions': 0,

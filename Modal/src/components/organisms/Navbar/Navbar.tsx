@@ -6,7 +6,7 @@ const Navbar: FunctionComponent = () => {
   return (
     <div className={Style.Maincontainer}>
       <h1>hello</h1>
-      <Modal btnValue="Open" content="테스트입니다" />
+      <Modal btnValue="Open" content="LogIn" />
     </div>
   );
 };
