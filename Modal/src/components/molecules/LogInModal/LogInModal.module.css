@@ -99,3 +99,7 @@
   align-items: center;
   width: 100%;
 }
+
+.ButtonContainer > button {
+  margin: 1rem;
+}

@@ -1,36 +1,33 @@
-import { FunctionComponent, ReactEventHandler, useState } from 'react';
+import { FunctionComponent, MouseEventHandler, ReactEventHandler, useState } from 'react';
 import { Textarea, ButtonSubmit, Input } from '@/components/atoms';
 import { useChange } from '@/hooks';
-import Style from './Modal.module.css';
+import Style from './LogInModal.module.css';
 
-interface Props {
-  btnValue: string;
-  content: string;
-}
-
-const Modal: FunctionComponent<Props> = ({ btnValue, content }) => {
+const LogInModal: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState<string>('Blind');
   const [idValue, setIdValue, onIdValueChange] = useChange('');
   const [passwordValue, setPasswordIdValue, onPasswordValueChange] = useChange('');
+  const [nameValue, setNameIdValue, onNameValueChange] = useChange('');
 
-  const handleOpen = (): void => {
-    setIsOpen('Show');
-    setIdValue('');
-    setPasswordIdValue('');
+  const handleOpen = (state: string): void => {
+    setIsOpen(state);
   };
 
   const handleClose: ReactEventHandler = (e): void => {
     if (e.target === e.currentTarget) {
+      setIdValue('');
+      setPasswordIdValue('');
+      setNameIdValue('');
       setIsOpen('BlindIng');
       setTimeout(() => setIsOpen('Blind'), 300);
     }
   };
 
   const submitInfo = (): void => {
-    console.log(idValue);
-    console.log(passwordValue);
+    setIsOpen('Blind');
     setIdValue('');
     setPasswordIdValue('');
+    setNameIdValue('');
   };
 
   const isView = () => {
@@ -47,19 +44,7 @@ const Modal: FunctionComponent<Props> = ({ btnValue, content }) => {
           }}
           tabIndex={0}
         >
-          <div className={Style.ModalMainBlindIng}>
-            <h1>{content}</h1>
-            <form className={Style.FormContainer}>
-              <Input value={idValue} onChange={onIdValueChange} type="text" placeholder="Id" />
-              <Input
-                value={passwordValue}
-                onChange={onPasswordValueChange}
-                type="password"
-                placeholder="PassWord"
-              />
-              <ButtonSubmit type="submit" onClick={submitInfo} />
-            </form>
-          </div>
+          <div className={Style.ModalMainBlindIng} />
         </div>
       );
     }
@@ -77,7 +62,7 @@ const Modal: FunctionComponent<Props> = ({ btnValue, content }) => {
           tabIndex={0}
         >
           <div className={Style.ModalMainShow}>
-            <h1>{content}</h1>
+            <h1>LogIn</h1>
             <form className={Style.FormContainer}>
               <Input value={idValue} onChange={onIdValueChange} type="text" placeholder="Id" />
               <Input
@@ -86,7 +71,48 @@ const Modal: FunctionComponent<Props> = ({ btnValue, content }) => {
                 type="password"
                 placeholder="PassWord"
               />
-              <ButtonSubmit type="submit" onClick={submitInfo} />
+              <div className={Style.ButtonContainer}>
+                <ButtonSubmit type="button" onClick={() => handleOpen('SingUp')} value="SingUp" />
+                <ButtonSubmit type="submit" onClick={submitInfo} value="LogIn" />
+              </div>
+            </form>
+          </div>
+        </div>
+      );
+    }
+    if (isOpen === 'SingUp') {
+      return (
+        <div
+          className={Style.ModalBackgroundShow}
+          role="button"
+          onClick={(e) => {
+            handleClose(e);
+          }}
+          onKeyDown={(e) => {
+            handleClose(e);
+          }}
+          tabIndex={0}
+        >
+          <div className={Style.ModalMainShow}>
+            <h1>SignUp</h1>
+            <form className={Style.FormContainer}>
+              <Input value={idValue} onChange={onIdValueChange} type="text" placeholder="Id" />
+              <Input
+                value={passwordValue}
+                onChange={onPasswordValueChange}
+                type="password"
+                placeholder="PassWord"
+              />
+              <Input
+                value={nameValue}
+                onChange={onNameValueChange}
+                type="text"
+                placeholder="Name"
+              />
+              <div className={Style.ButtonContainer}>
+                <ButtonSubmit type="button" onClick={() => handleOpen('Show')} value="Back" />
+                <ButtonSubmit type="submit" onClick={submitInfo} value="Submit" />
+              </div>
             </form>
           </div>
         </div>
@@ -97,12 +123,12 @@ const Modal: FunctionComponent<Props> = ({ btnValue, content }) => {
 
   return (
     <>
-      <button className={Style.Btn} type="button" onClick={handleOpen}>
-        {btnValue}
+      <button className={Style.Btn} type="button" onClick={() => handleOpen('Show')}>
+        LogIn
       </button>
       {isView()}
     </>
   );
 };
 
-export default Modal;
+export default LogInModal;

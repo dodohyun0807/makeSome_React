@@ -1,3 +1,3 @@
-import Modal from './Modal/Modal';
+import LogInModal from './LogInModal/LogInModal';
 
-export { Modal };
+export { LogInModal };
