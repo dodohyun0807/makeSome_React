@@ -1,0 +1,13 @@
+.profile{
+  width: 500px;
+  text-align: center;
+  padding: 1rem;
+  background-color: aliceblue;
+  box-shadow:steelblue;
+}
+
+.photo{
+  width: 300px;
+  height: 400px;
+  border-radius: 30px;
+}
