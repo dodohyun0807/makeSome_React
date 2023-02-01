@@ -1,10 +1,9 @@
-import { Profile } from "./components/Profile";
+import { Profile } from "./components/organisms";
 import "./App.css";
 
 function App() {
   const people = [
     {
-      pk: 1,
       url: "https://cdn.mhnse.com/news/photo/202211/156007_150435_2723.jpg",
       des: "카리나",
       name: "카리나",
@@ -12,7 +11,6 @@ function App() {
       isNew: true,
     },
     {
-      pk: 2,
       url: "https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2022/04/29/0adb0b65-4976-4fdd-96bb-c0be1c558637.jpg",
       des: "이주빈",
       name: "이주빈",
@@ -20,7 +18,6 @@ function App() {
       isNew: false,
     },
     {
-      pk: 3,
       url: "https://img.hankyung.com/photo/202103/03.21325653.1.jpg",
       des: "설인아",
       name: "설인아",
@@ -31,9 +28,9 @@ function App() {
 
   return (
     <div className="App">
-      {people.map((id) => (
+      {people.map((id, index) => (
         <Profile
-          key={id.pk}
+          key={index}
           url={id.url}
           des={id.des}
           name={id.name}

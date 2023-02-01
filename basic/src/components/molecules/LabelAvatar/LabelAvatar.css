@@ -1,0 +1,15 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: coral;
+  width: 5rem;
+  height: 2.5rem;
+  border-radius: 2rem;
+  color: bisque;
+  font-weight: bold;
+  position: relative;
+  top: 10%;
+  left: 25%;
+}
