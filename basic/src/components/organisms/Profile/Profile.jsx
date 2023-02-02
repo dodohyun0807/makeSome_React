@@ -1,6 +1,6 @@
 import React from "react";
 import "./Profile.css";
-import { LabelAvatar } from "../../molecules";
+import { LabelAvatar, LikeBox } from "../../molecules";
 import { TextSubtitle, TextTitle, ImageAvatar } from "../../atoms";
 
 const Profile = ({ url, des, name, job, isNew }) => {
@@ -14,6 +14,7 @@ const Profile = ({ url, des, name, job, isNew }) => {
           <ImageAvatar url={url} alt={des} />
           <TextTitle content={name} />
           <TextSubtitle content={job} />
+          <LikeBox />
         </>
       )}
     </div>

@@ -1,0 +1,36 @@
+.MainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 40%;
+  bottom: 5%;
+}
+
+.BtnBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.CntBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: steelblue;
+  color: aliceblue;
+  font-weight: bold;
+  border-radius: 1rem;
+  width: 5rem;
+  height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.HeartSvg {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+}
