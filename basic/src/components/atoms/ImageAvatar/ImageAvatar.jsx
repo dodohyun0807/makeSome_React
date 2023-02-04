@@ -5,4 +5,4 @@ const ImageAvatar = ({ url, des }) => {
   return <img className="photo" src={url} alt={des} />;
 };
 
-export default ImageAvatar;
+export default React.memo(ImageAvatar);

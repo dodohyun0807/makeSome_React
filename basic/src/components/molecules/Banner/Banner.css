@@ -1,0 +1,13 @@
+.BannerMainContainer {
+  display: flex;
+  flex-direction: row nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: cornflowerblue;
+  color: aliceblue;
+  font-weight: bold;
+  width: 20rem;
+  height: 3rem;
+  margin: 1rem 0rem 1rem 0rem;
+  font-size: 1.5rem;
+}

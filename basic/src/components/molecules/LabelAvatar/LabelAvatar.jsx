@@ -5,4 +5,4 @@ const LabelAvatar = () => {
   return <span className="label">new </span>;
 };
 
-export default LabelAvatar;
+export default React.memo(LabelAvatar);

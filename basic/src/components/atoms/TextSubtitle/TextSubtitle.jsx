@@ -5,4 +5,4 @@ const TextSubtitle = ({ content }) => {
   return <span className="subTitle">{content}</span>;
 };
 
-export default TextSubtitle;
+export default React.memo(TextSubtitle);

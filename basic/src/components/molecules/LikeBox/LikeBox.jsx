@@ -1,26 +1,33 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "../../atoms";
 import "./LikeBox.css";
 import heartSvg from "../../../asset/heart.svg";
 
-const LikeBox = () => {
-  const [cnt, setCnt] = useState(0);
+const LikeBox = ({ totalSet, id }) => {
+  const localStorage = window.localStorage;
+  const [cnt, setCnt] = useState(Number(localStorage.getItem(`cnt${id}`)) || 0);
 
-  const addCnt = () => {
+  useEffect(() => {
+    localStorage.setItem(`cnt${id}`, cnt);
+  }, [cnt]);
+
+  const addCnt = useCallback(() => {
     setCnt((prev) => prev + 1);
-  };
+    totalSet((prev) => prev + 1);
+  }, [totalSet]);
 
-  const minusCnt = () => {
+  const minusCnt = useCallback(() => {
     if (cnt > 0) {
       setCnt((prev) => prev - 1);
+      totalSet((prev) => prev - 1);
     }
-  };
+  }, [cnt, totalSet]);
 
   return (
-    <div className="MainContainer">
+    <div className="LikeBoxMainContainer">
       <div className="CntBox">
-        {cnt}
-        <img className="HeartSvg" src={heartSvg} />
+        <span>{cnt}</span>
+        <img className="HeartSvg" src={heartSvg} alt="heartIcon" />
       </div>
       <div className="BtnBox">
         <Button onClick={minusCnt} content="-" />

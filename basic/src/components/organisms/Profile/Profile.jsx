@@ -3,7 +3,7 @@ import "./Profile.css";
 import { LabelAvatar, LikeBox } from "../../molecules";
 import { TextSubtitle, TextTitle, ImageAvatar } from "../../atoms";
 
-const Profile = ({ url, des, name, job, isNew }) => {
+const Profile = ({ id, url, des, name, job, isNew, totalSet }) => {
   return (
     <div className="profile">
       {isNew && <LabelAvatar />}
@@ -14,7 +14,7 @@ const Profile = ({ url, des, name, job, isNew }) => {
           <ImageAvatar url={url} alt={des} />
           <TextTitle content={name} />
           <TextSubtitle content={job} />
-          <LikeBox />
+          <LikeBox totalSet={totalSet} id={id} />
         </>
       )}
     </div>
