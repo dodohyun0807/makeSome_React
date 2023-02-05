@@ -2,59 +2,92 @@ import React, { useEffect, useState } from "react";
 import { Banner } from "./components/molecules";
 import { Profile } from "./components/organisms";
 import "./App.css";
+import { db } from "./firebase";
+import {
+  collection,
+  getDocs,
+  query,
+  getDoc,
+  setDoc,
+  doc,
+  docSnap,
+} from "firebase/firestore";
 
-function App() {
-  const people = [
-    {
-      id: 1,
-      url: "https://cdn.mhnse.com/news/photo/202211/156007_150435_2723.jpg",
-      des: "카리나",
-      name: "카리나",
-      job: "가수",
-      isNew: true,
-    },
-    {
-      id: 2,
-      url: "https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2022/04/29/0adb0b65-4976-4fdd-96bb-c0be1c558637.jpg",
-      des: "이주빈",
-      name: "이주빈",
-      job: "배우",
-      isNew: false,
-    },
-    {
-      id: 3,
-      url: "https://img.hankyung.com/photo/202103/03.21325653.1.jpg",
-      des: "설인아",
-      name: "설인아",
-      job: "배우",
-      isNew: true,
-    },
-  ];
+async function App() {
+  const databaseUrl =
+    "https://basic-2b961-default-rtdb.asia-southeast1.firebasedatabase.app";
 
-  const localStorage = window.localStorage;
-  const [total, setTotal] = useState(
-    Number(localStorage.getItem("total")) || 0
-  );
+  const [people, setPeople] = useState();
+  const [total, setTotal] = useState();
 
-  useEffect(() => {
-    localStorage.setItem("total", total);
-  }, [total]);
+  const docRef = doc(db, "basic", "cards");
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  }
+
+  // useEffect(() => {
+  //   fetch(`${databaseUrl}/cards.json`, {
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" },
+  //   })
+  //     .then((res) => {
+  //       if (res.status !== 200) {
+  //         throw new Error(res.statusText);
+  //       }
+  //       return res.json();
+  //     })
+  //     .then((cards) => setPeople({ cards: cards }));
+
+  //   fetch(`${databaseUrl}/total.json`, {
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" },
+  //   })
+  //     .then((res) => {
+  //       if (res.status !== 200) {
+  //         throw new Error(res.statusText);
+  //       }
+  //       return res.json();
+  //     })
+  //     .then((total) => setTotal(total.totalCnt));
+  // }, []);
+
+  // useEffect(() => {
+  //   fetch(`https://cors-anywhere.herokuapp.com/${databaseUrl}/total.json`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       totalCnt: total,
+  //     }),
+  //   });
+  // }, [total]);
 
   return (
     <div className="App">
-      <Banner totalCnt={total} />
-      {people.map((id) => (
-        <Profile
-          key={id.id}
-          id={id.id}
-          url={id.url}
-          des={id.des}
-          name={id.name}
-          job={id.job}
-          isNew={id.isNew}
-          totalSet={setTotal}
-        />
-      ))}
+      {total && <Banner totalCnt={total} />}
+      {people && (
+        <>
+          {people.cards.map((id, index) => (
+            <Profile
+              key={index}
+              id={id.id}
+              url={id.url}
+              des={id.des}
+              name={id.name}
+              job={id.job}
+              isNew={id.isNew}
+              totalSet={setTotal}
+              like={id.like}
+            />
+          ))}
+        </>
+      )}
     </div>
   );
 }

@@ -3,13 +3,12 @@ import { Button } from "../../atoms";
 import "./LikeBox.css";
 import heartSvg from "../../../asset/heart.svg";
 
-const LikeBox = ({ totalSet, id }) => {
-  const localStorage = window.localStorage;
-  const [cnt, setCnt] = useState(Number(localStorage.getItem(`cnt${id}`)) || 0);
+const LikeBox = ({ totalSet, like }) => {
+  const [cnt, setCnt] = useState(like);
 
-  useEffect(() => {
-    localStorage.setItem(`cnt${id}`, cnt);
-  }, [cnt]);
+  // useEffect(() => {
+  //   localStorage.setItem(`cnt${id}`, cnt);
+  // }, [cnt]);
 
   const addCnt = useCallback(() => {
     setCnt((prev) => prev + 1);
