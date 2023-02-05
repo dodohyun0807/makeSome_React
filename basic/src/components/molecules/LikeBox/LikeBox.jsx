@@ -2,13 +2,11 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "../../atoms";
 import "./LikeBox.css";
 import heartSvg from "../../../asset/heart.svg";
+import { db } from "../../../firebase";
+import { doc, updateDoc } from "firebase/firestore";
 
-const LikeBox = ({ totalSet, like }) => {
+const LikeBox = ({ totalSet, like, id }) => {
   const [cnt, setCnt] = useState(like);
-
-  // useEffect(() => {
-  //   localStorage.setItem(`cnt${id}`, cnt);
-  // }, [cnt]);
 
   const addCnt = useCallback(() => {
     setCnt((prev) => prev + 1);
@@ -21,6 +19,16 @@ const LikeBox = ({ totalSet, like }) => {
       totalSet((prev) => prev - 1);
     }
   }, [cnt, totalSet]);
+
+  useEffect(() => {
+    async function updateData() {
+      const cardUpdate = doc(db, "cards", `${id}`);
+      await updateDoc(cardUpdate, {
+        like: cnt,
+      });
+    }
+    updateData();
+  }, [cnt, id]);
 
   return (
     <div className="LikeBoxMainContainer">
