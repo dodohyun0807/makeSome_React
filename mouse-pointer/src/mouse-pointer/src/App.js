@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
+  const [xy, setXY] = useState({ x: 0, y: 0 });
 
   const mouseXY = (e) => {
-    setX((prev) => e.clientX);
-    setY((prev) => e.clientY);
+    setXY((prev) => ({ x: e.clientX, y: e.clientY }));
   };
 
   return (
@@ -18,7 +16,7 @@ function App() {
       }}>
       <div
         className="moveContaier"
-        style={{ transform: `translate(${x}px, ${y}px)` }}></div>
+        style={{ transform: `translate(${xy.x}px, ${xy.y}px)` }}></div>
     </div>
   );
 }
