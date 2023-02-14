@@ -1,0 +1,14 @@
+.CardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 15rem;
+  height: 20rem;
+  border-radius: 3rem;
+  background-color: black;
+  color: antiquewhite;
+  font-weight: bold;
+  font-size: medium;
+  margin: 1rem;
+}
