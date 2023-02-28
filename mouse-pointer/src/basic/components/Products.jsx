@@ -28,13 +28,13 @@ export default function Products() {
     };
   }, [checked]);
 
-  if (status === "Error!") {
-    return <p>error</p>;
-  }
+  // if (status === "Error!") {
+  //   return <p>error</p>;
+  // }
 
-  if (loading) {
-    <p>loading</p>;
-  }
+  // if (loading) {
+  //   <p>loading</p>;
+  // }
 
   return (
     <>
