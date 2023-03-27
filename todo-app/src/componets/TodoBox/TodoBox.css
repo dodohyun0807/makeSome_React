@@ -1,0 +1,8 @@
+.TodoBox_MainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 70vw;
+  height: 70vh;
+}

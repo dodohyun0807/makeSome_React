@@ -1,0 +1,9 @@
+.Navbar_Maincontainer {
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  background-color: rgb(5, 5, 90);
+}
