@@ -1,6 +1,10 @@
 import React, { FunctionComponent } from "react";
 
-const boardPage: FunctionComponent = () => {
+interface Props {
+  msg: string;
+}
+
+const boardPage: FunctionComponent<Props> = ({ msg }) => {
   return <h1>hello@@@@@@@@@@@@@@@@@@@@@@</h1>;
 };
 

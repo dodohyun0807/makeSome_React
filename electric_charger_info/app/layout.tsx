@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <Suspense fallback={<Loading />}>
-      <html lang="en">
+      <html>
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
           {children}
         </body>
